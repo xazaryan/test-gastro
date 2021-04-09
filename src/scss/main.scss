@@ -1,0 +1,228 @@
+body {
+  font-family: 'Sofia Pro', sans-serif;
+}
+.gestro-app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px;
+  background: $secondary;
+  background: linear-gradient(124.03deg, #91DBF6 31.72%, #57AFCF 100%);
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+.content-block {
+  width: 100%;
+  //max-width: 1800px;
+  max-width: 1490px;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+  padding: 60px;
+  position: relative;
+  border-radius: 60px;
+  background-color: $blue-light;
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
+}
+
+.schedule-box {
+  .schedule-row {
+    $count: 7;
+    $gutter: 9px;
+    margin: 0 -#{$gutter / 2} ;
+    .schedule-col {
+      width: #{100% / $count};
+      padding: 0 #{$gutter / 2} 24px;
+    }
+  }
+  @media (max-width: 1600px) {
+    .schedule-row {
+      $count: 5;
+      .schedule-col {
+        width: #{100% / $count};
+      }
+    }
+  }
+}
+
+.my-switch {
+  width: 96px;
+  min-height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  border-radius: 18px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  input[type="checkbox"] {
+    display: none;
+    &:checked {
+      & ~ span {
+        transform: translateX(0);
+        &.switch-bg {
+          background-color: $green-light;
+        }
+      }
+    }
+  }
+  span {
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+    transform: translateX(-60px);
+    transition: all .3s ease-in;
+    &.switch-bg {
+      width: 100%;
+      height: 100%;
+      background-color: $blue-dray;
+      border-radius: 18px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transform: translateX(0);
+    }
+    &.check-item {
+      width: 28px;
+      min-width: 28px;
+      height: 28px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+    &.label {
+      padding: 3px 12px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 110.4%;
+      color: $blue-dark;
+    }
+  }
+}
+.time-picker {
+  width: 68px;
+  position: relative;
+  .label {
+    display: block;
+    padding: 4px 5px 4px 7px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    position: relative;
+    input {
+      width: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 28px;
+      color: $blue-dark;
+      &:focus {
+        outline: none;
+      }
+    }
+    .icon {
+      width: 8px;
+      height: 24px;
+      position: absolute;
+      top: 10px;
+      right: 7px;
+      z-index: 1;
+    }
+  }
+  .time-list-box {
+    //width: 100%;
+    min-height: 50px;
+    background-color: #fff;
+    z-index: 555 !important;
+    .time-list {
+      max-height: 168px;
+      overflow-y: auto;
+      @include reset-list;
+      .time-list-item {
+        text-align: left;
+        span {
+          display: block;
+          padding: 3px 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+          color: $blue-dark;
+        }
+        &:hover {
+          background-color: #D4E1F0;
+        }
+        &.active {
+          background-color: #D4E1F0;
+        }
+      }
+    }
+  }
+}
+
+.schedule-item {
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  .schedule-header {
+    padding: 24px 12px;
+    display: flex;
+    justify-content: center;
+    .toggle-btn-box {
+
+    }
+  }
+  .schedule-body {
+    min-height: 234px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #D4E1F0;
+    border-radius: 40px;
+    text-align: center;
+    &.disabled {
+      background-color: transparent;
+      justify-content: center;
+      p {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 120%;
+        .icon {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    .time-picker {
+      margin: 0 auto;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 120%;
+    }
+    .residue {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #5E768F;
+      position: relative;
+      &::before, &::after {
+        content: '';
+        width: 0;
+        height: 20px;
+        border: 1px dashed #B0C8E1;
+        position: absolute;
+        left: calc(50% - .5px);
+        z-index: 1;
+      }
+      &::before {
+        top: -20px;
+      }
+      &::after {
+        bottom: -20px;
+      }
+    }
+  }
+}

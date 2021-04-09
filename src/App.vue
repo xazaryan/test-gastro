@@ -1,12 +1,20 @@
 <template>
-    <div class="admin-app">
-
-    </div>
+    <v-app class="gestro-app" id="gestroApp">
+        <div class="content-block">
+            <router-view/>
+        </div>
+    </v-app>
 </template>
 
 <script>
 export default {
-    name: 'App',
+    name: "App",
     data: () => ({}),
-};
+    created() {
+    },
+    mounted() {
+    },
+    methods: {},
+    computed: {},
+}
 </script>
